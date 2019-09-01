@@ -7,6 +7,8 @@ class Bird {
 		this.gravity = 0.5;
 		this.lift = -6;
 		this.out = false;
+		
+		this.brain = new neuralNetwork(4, 5, 4);
 	}
 	
 	update(pipes) {
