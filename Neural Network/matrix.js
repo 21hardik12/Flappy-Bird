@@ -36,6 +36,21 @@ Matrix.prototype.copy = function() {
 	return clone;
 }
 
+Matrix.prototype.copy = function(partner) {
+	let child = new Matrix(this.rows, this.cols);
+	let randc = floor(random(cols));
+	let randr = floor(random(rows));
+	for (let i = 0; i < this.rows; i++) {
+		for (let j = 0; j < this.cols; j++) {
+			if ((i < randr) || (i == randr && j < randc)) {
+				child.matrix[i][j] = this.matrix[i][j];
+			} else {
+				child.matrix[i][j] = partner.matrix[i][j];
+			}
+		}		
+	}
+}
+
 Matrix.prototype.toArray = function() {  
   var arr = [];
   for (var i = 0; i < this.rows; i++) {
@@ -64,6 +79,16 @@ Matrix.prototype.copy = function() {
     }
   }
   return result;
+}
+
+Matrix.prototype.mutate = function(mutationRate) {
+	for (let i = 0; i < this.rows; i++) {
+		for (let j = 0; j < this.cols; j++) {
+			if (random(1) < mutatioRate) {
+				this.matrix[i][j] += randomGaussian()/5;
+			}
+		}
+	}
 }
 
 Matrix.prototype.add = function(other) {
