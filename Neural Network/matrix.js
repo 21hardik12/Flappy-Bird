@@ -26,6 +26,16 @@ Matrix.prototype.activate = function() {
 	}
 }
 
+Matrix.prototype.copy = function() {
+	let clone = new Matrix(this.rows, this.cols);
+	for (let i = 0; i < this.rows; i++) {
+		for (let j = 0; j < this.cols; j++) {
+			clone.matrix[i][j] = this.matrix[i][j];
+		}
+	}
+	return clone;
+}
+
 Matrix.prototype.toArray = function() {  
   var arr = [];
   for (var i = 0; i < this.rows; i++) {
