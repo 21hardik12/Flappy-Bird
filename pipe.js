@@ -1,11 +1,11 @@
 class Pipe {
 	constructor(x) {
 		this.x = x;
-		this.gap = int(random(60, 100))
+		this.gap = 80//int(random(60, 100))
 		this.upper = int(random(10, height - this.gap - 20));   
 		this.lower = this.upper + this.gap;
 		this.xspeed = -1;    
-		this.width = int(random(10,30));
+		this.width = 20//int(random(10,30));
 	}
 
 	update() {

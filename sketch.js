@@ -1,9 +1,9 @@
 let pipes;
 let population;
 function setup() {
-	createCanvas(400, 400);
+	createCanvas(600, 400);
 	pipes = new Pipes(5);
-	population = new Population(50);
+	population = new Population(50, 0.1);
 }
 
 function draw() {   
