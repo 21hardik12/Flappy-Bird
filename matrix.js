@@ -36,10 +36,10 @@ Matrix.prototype.copy = function() {
 	return clone;
 }
 
-Matrix.prototype.copy = function(partner) {
+Matrix.prototype.crossOver = function(partner) {
 	let child = new Matrix(this.rows, this.cols);
-	let randc = floor(random(cols));
-	let randr = floor(random(rows));
+	let randc = floor(random(this.cols));
+	let randr = floor(random(this.rows));
 	for (let i = 0; i < this.rows; i++) {
 		for (let j = 0; j < this.cols; j++) {
 			if ((i < randr) || (i == randr && j < randc)) {
@@ -49,6 +49,7 @@ Matrix.prototype.copy = function(partner) {
 			}
 		}		
 	}
+	return child;
 }
 
 Matrix.prototype.toArray = function() {  
@@ -85,7 +86,7 @@ Matrix.prototype.mutate = function(mutationRate) {
 	for (let i = 0; i < this.rows; i++) {
 		for (let j = 0; j < this.cols; j++) {
 			if (random(1) < mutatioRate) {
-				this.matrix[i][j] += randomGaussian()/5;
+				this.matrix[i][j] = randomGaussian();
 			}
 		}
 	}

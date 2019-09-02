@@ -1,23 +1,22 @@
 let pipes;
-let bird;
+let population;
 function setup() {
 	createCanvas(400, 400);
 	pipes = new Pipes(5);
-	bird = new Bird();
-}
-
-function keyPressed() {
-	if (keyCode == UP_ARROW) {
-		bird.yspeed = bird.lift;
-	}	
+	population = new Population(50);
 }
 
 function draw() {   
 	background(220);		
 	pipes.show();
-	bird.show();
-	if (bird.out == false) {
-		pipes.update();		
-		bird.update(pipes.pipes);
-	}		
+	pipes.update();
+	population.show();
+	population.update(pipes.pipes);
+	if (population.allOut == true) {
+		pipes.reset();
+		population.calcFitness();
+		population.naturalSelection();
+		population.mutateTheBabies();		
+		population.allOut = false;
+	}
 }

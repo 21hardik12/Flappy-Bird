@@ -22,12 +22,21 @@ class Pipe {
 class Pipes {
 	constructor(n) {
 		this.pipes = [];	
-		this.pipes.push(new Pipe(width));
-		for (let i = 1; i < n; i++) {
+		this.n_pipes = n;
+		this.pipes.push(new Pipe(width/2 + 50));
+		for (let i = 1; i < this.n_pipes - 1; i++) {
 			this.pipes.push(new Pipe(this.pipes[i-1].x + int(random(110, 140))));
 		}
 	}
-
+	
+	reset() {
+		this.pipes = [];	
+		this.pipes.push(new Pipe(width/2+50));
+		for (let i = 1; i < this.n_pipes - 1; i++) {
+			this.pipes.push(new Pipe(this.pipes[i-1].x + int(random(110, 140))));
+		}
+	}
+	
 	show() {
 		for (let i = 0; i < this.pipes.length; i++) {
 			this.pipes[i].show();	
